@@ -4,6 +4,7 @@ import Login from "./view/Login";
 import Register from "./view/Register";
 import Home from "./view/Home";
 import Catalog from "./view/Catalog";
+import Compare from "./view/Compare";
 
 // Pantalla temporal para las secciones que aún no están construidas.
 function ComingSoon({ title }) {
@@ -26,7 +27,7 @@ function App() {
             <Route element={<Layout />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="/catalogo" element={<Catalog />} />
-                <Route path="/comparar" element={<ComingSoon title="Comparar" />} />
+                <Route path="/comparar" element={<Compare />} />
                 <Route path="/crear-setup" element={<ComingSoon title="Crear Setup" />} />
                 <Route path="/cuenta" element={<ComingSoon title="Mi cuenta" />} />
             </Route>
