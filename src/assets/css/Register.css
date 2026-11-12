@@ -1,0 +1,704 @@
+/* ========================================
+   VARIABLES
+======================================== */
+
+.register-page {
+    --bg: #050816;
+    --card: rgba(8, 12, 30, 0.92);
+    --field: #0e1530;
+    --border: rgba(99, 102, 241, 0.35);
+    --text: #f8fafc;
+    --muted: #aab4c8;
+    --violet: #8b5cf6;
+    --cyan: #22b8f0;
+    --gradient: linear-gradient(90deg, #7c3aed, #1ec3ff);
+}
+
+/* ========================================
+   PÁGINA Y FONDO
+======================================== */
+
+.register-page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    position: relative;
+    overflow-x: hidden;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+
+    background-color: var(--bg);
+    background-image: url("/images/setup-gamer.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: cover;
+}
+
+/* Oscurece el fondo y lo funde hacia la derecha */
+.register-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background:
+        linear-gradient(90deg, rgba(5, 8, 22, 0.55) 0%, rgba(5, 8, 22, 0.85) 45%, rgba(5, 8, 22, 0.95) 100%);
+}
+
+.register-wrapper {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1440px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 28px 48px 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   BARRA SUPERIOR
+======================================== */
+
+.register-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.register-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.register-brand img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.brand-accent {
+    color: #4f6bff;
+    background: linear-gradient(90deg, #7c3aed, #1ec3ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.register-topbar-login {
+    display: flex;
+    gap: 14px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.register-topbar-login a {
+    color: var(--violet);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.register-topbar-login a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   LAYOUT DE DOS COLUMNAS
+======================================== */
+
+.register-layout {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(420px, 474px);
+    align-items: center;
+    column-gap: 64px;
+
+    padding-top: 24px;
+}
+
+/* ========================================
+   COLUMNA IZQUIERDA
+======================================== */
+
+.register-info {
+    max-width: 440px;
+}
+
+.register-info h1 {
+    margin: 0 0 20px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.12;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #7c3aed, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.register-info-text {
+    margin: 0 0 28px;
+
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.register-benefits {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.register-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.benefit-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #a78bfa;
+    background: rgba(99, 102, 241, 0.16);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+}
+
+.register-benefits strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.register-benefits small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* ========================================
+   TARJETA
+======================================== */
+
+.register-card {
+    width: 100%;
+    padding: 34px 32px 32px;
+
+    background: var(--card);
+    border: 1px solid transparent;
+    border-radius: 16px;
+
+    /* Borde con degradado violeta → azul */
+    background-image:
+        linear-gradient(var(--card), var(--card)),
+        linear-gradient(135deg, #8b5cf6, #1e40af 55%, #22b8f0);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    box-shadow:
+        0 0 40px rgba(99, 102, 241, 0.18),
+        0 20px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+.register-card h2 {
+    margin: 0 0 6px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.register-card-subtitle {
+    margin: 0 0 26px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.register-field {
+    position: relative;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+
+    margin-bottom: 18px;
+}
+
+/* Caja del ícono (a la izquierda) */
+.field-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #c7d2fe;
+    background: rgba(8, 12, 30, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    position: relative;
+    z-index: 1;
+}
+
+.field-body {
+    flex: 1;
+    min-width: 0;
+
+    margin-left: -1px;
+}
+
+.field-body label {
+    display: block;
+
+    margin: 0 0 4px 12px;
+
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.field-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-body input[type="text"],
+.field-body input[type="email"],
+.field-body input[type="password"] {
+    width: 100%;
+    height: 44px;
+    min-width: 0;
+    padding: 0 14px;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-input-wrap input {
+    padding-right: 44px !important;
+}
+
+.field-body input::placeholder {
+    color: #7d89a8;
+    font-size: 13.5px;
+}
+
+.field-body input:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+/* Botón del ojo */
+.toggle-password {
+    position: absolute;
+    right: 6px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #cbd5e1;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-password:hover {
+    color: var(--cyan);
+}
+
+.toggle-password:focus-visible,
+.register-submit:focus-visible,
+.register-google:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   CHECKBOX DE TÉRMINOS
+======================================== */
+
+.register-terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 4px 0 20px;
+
+    color: #dbe3f5;
+    font-size: 12.5px;
+    cursor: pointer;
+}
+
+.register-terms input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.terms-box {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: transparent;
+    background: transparent;
+    border: 1.5px solid #6366f1;
+    border-radius: 4px;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.register-terms input:checked + .terms-box {
+    color: white;
+    background: #6d4aff;
+}
+
+.register-terms input:focus-visible + .terms-box {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.register-terms a {
+    color: var(--violet);
+    text-decoration: none;
+}
+
+.register-terms a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   ERROR
+======================================== */
+
+.register-error {
+    margin: 0 0 14px;
+
+    color: #f87171;
+    font-size: 13px;
+}
+
+/* ========================================
+   BOTONES
+======================================== */
+
+.register-submit {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+
+    background: var(--gradient);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+
+    box-shadow: 0 0 22px rgba(80, 120, 255, 0.35);
+    transition: box-shadow 0.25s, transform 0.2s;
+}
+
+.register-submit:hover {
+    box-shadow: 0 0 30px rgba(80, 140, 255, 0.55);
+    transform: translateY(-1px);
+}
+
+/* Separador "o" */
+.register-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin: 20px 0;
+
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.register-divider::before,
+.register-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(99, 102, 241, 0.3);
+}
+
+/* Botón Google */
+.register-google {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+    background-image:
+        linear-gradient(#070b1c, #070b1c),
+        linear-gradient(90deg, #8b5cf6, #22b8f0);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    transition: box-shadow 0.25s;
+}
+
+.register-google:hover {
+    box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+}
+
+/* ========================================
+   PANTALLA DE ÉXITO
+======================================== */
+
+.register-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px 0 0;
+    text-align: center;
+}
+
+.register-success .register-brand {
+    font-size: 28px;
+}
+
+.register-success .register-brand img {
+    width: 48px;
+    height: 48px;
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 40px 0 28px;
+
+    color: #3b82f6;
+    border: 4px solid transparent;
+    border-radius: 50%;
+
+    background-image:
+        linear-gradient(var(--card), var(--card)),
+        linear-gradient(135deg, #7c3aed, #22b8f0);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
+}
+
+.register-card.register-success h2 {
+    margin-bottom: 18px;
+
+    font-size: 34px;
+    line-height: 1.15;
+}
+
+.register-success p {
+    max-width: 340px;
+    margin: 0 0 32px;
+
+    color: var(--text);
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+.success-button {
+    width: calc(100% - 64px);
+    height: 50px;
+    margin-bottom: 40px;
+}
+
+.success-footer {
+    width: 100%;
+    padding: 20px 0 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    text-align: left;
+    border-top: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.success-footer img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.success-footer strong {
+    display: block;
+    color: #8f9bc0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 15px;
+}
+
+.success-footer small {
+    color: #6b7699;
+    font-size: 10.5px;
+}
+
+/* ========================================
+   TABLET Y LAPTOP PEQUEÑA
+======================================== */
+
+@media (max-width: 1100px) {
+    .register-layout {
+        column-gap: 40px;
+        grid-template-columns: minmax(240px, 1fr) minmax(400px, 474px);
+    }
+
+    .register-info h1 {
+        font-size: 32px;
+    }
+}
+
+/* ========================================
+   MÓVIL / TABLET VERTICAL
+   (se oculta la columna izquierda)
+======================================== */
+
+@media (max-width: 900px) {
+    .register-wrapper {
+        padding: 22px 20px 32px;
+    }
+
+    .register-layout {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .register-info {
+        display: none;
+    }
+
+    .register-card {
+        max-width: 474px;
+    }
+
+    .register-brand {
+        font-size: 26px;
+    }
+
+    .register-brand img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 520px) {
+    .register-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .register-card {
+        padding: 26px 18px 24px;
+    }
+
+    .register-card h2 {
+        font-size: 26px;
+    }
+
+    .field-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .success-button {
+        width: calc(100% - 36px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .register-submit,
+    .register-google,
+    .field-body input {
+        transition: none;
+    }
+
+    .register-submit:hover {
+        transform: none;
+    }
+}

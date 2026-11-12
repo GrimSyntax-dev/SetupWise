@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/Login.css";
 
 function Login() {
@@ -20,7 +21,8 @@ function Login() {
       <section className="login-left">
 
         <header className="login-brand">
-          <img src="/images/logo-setupwise.png" alt="SetupWise" />
+          <img src="/images/logo-setupwise.png" alt="Logo SetupWise" />
+          <span>Setup<span>Wise</span></span>
         </header>
 
         <div className="login-presentation">
@@ -72,7 +74,8 @@ function Login() {
         <div className="login-card">
 
           <div className="card-brand">
-            <img src="/images/logo-setupwise.png" alt="SetupWise" />
+            <img src="/images/logo-setupwise.png" alt="Logo SetupWise" />
+            <span>SetupWise</span>
           </div>
 
           <div className="card-heading">
@@ -156,7 +159,7 @@ function Login() {
 
           <div className="register-text">
             ¿No tienes una cuenta?
-            <a href="#">Regístrate</a>
+            <Link to="/registro">Regístrate</Link>
           </div>
 
         </div>
