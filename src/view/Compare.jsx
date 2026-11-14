@@ -14,7 +14,7 @@ import {
     ImageOff,
     Tag
 } from "lucide-react";
-import { products } from "../data/products";
+import { products } from "../data/Products";
 import { compareSpecs, specsById } from "../data/compareSpecs";
 import { formatPrice } from "../utils/formatPrice";
 import "../assets/css/Compare.css";
