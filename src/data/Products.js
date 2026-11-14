@@ -22,7 +22,7 @@ export const products = [
         reviews: 124,
         stock: 18,
         featured: true,
-        image: "/images/products/teclado-hyperx-alloy.png"
+        image: "/images/products/tecla_hyperx_60.png"
     },
     {
         id: 2,
@@ -34,7 +34,7 @@ export const products = [
         reviews: 98,
         stock: 25,
         featured: true,
-        image: "/images/products/mouse-razer-deathadder.png"
+        image: "/images/products/mouse_razer_deathadder.png"
     },
     {
         id: 3,
@@ -118,7 +118,7 @@ export const products = [
         reviews: 142,
         stock: 12,
         featured: false,
-        image: "/images/products/teclado-logitech-gpro.png"
+        image: "/images/products/tecla_logi_g_tkl.png"
     },
     {
         id: 10,
@@ -130,7 +130,7 @@ export const products = [
         reviews: 305,
         stock: 30,
         featured: false,
-        image: "/images/products/mouse-logitech-g502.png"
+        image: "/images/products/mouse_logi_g502.png"
     },
     {
         id: 11,
