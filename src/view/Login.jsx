@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../assets/css/Login.css";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signIn } = useAuth();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Más adelante conectaremos el inicio de sesión con PHP y MySQL.
-  };
+  e.preventDefault();
+  // Por ahora cualquier dato entra; luego se valida contra el backend.
+  signIn();
+  navigate(location.state?.from ?? "/", { replace: true });
+};
 
   return (
     <main className="login-page">

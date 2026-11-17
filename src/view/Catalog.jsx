@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import {
     Package,
     Keyboard,
@@ -15,7 +15,7 @@ import {
     SearchX
 } from "lucide-react";
 import ProductCard from "../components/ProductCard";
-import { categories, products } from "../data/Products";
+import { categories, products } from "../data/products";
 import "../assets/css/Catalog.css";
 
 const PAGE_SIZE = 8;
@@ -39,7 +39,11 @@ function normalize(text) {
 
 function Catalog() {
     const { search } = useOutletContext();
-    const [category, setCategory] = useState("todos");
+    const [searchParams] = useSearchParams();
+    const requested = searchParams.get("categoria");
+    const [category, setCategory] = useState(
+        categories.some((c) => c.id === requested) ? requested : "todos"
+    );
     const [page, setPage] = useState(1);
 
     const query = normalize(search.trim());

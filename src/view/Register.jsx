@@ -12,6 +12,7 @@ import {
     ArrowRight
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../assets/css/Register.css";
 
 function GoogleIcon() {
@@ -37,6 +38,7 @@ function Brand() {
 }
 
 function Register() {
+    const { updateUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [registered, setRegistered] = useState(false);
@@ -76,6 +78,12 @@ function Register() {
         }
 
         // Más adelante aquí conectaremos el registro con PostgreSQL.
+        // Mientras tanto, se guardan los datos para mostrarlos en "Mi cuenta".
+        updateUser({
+            fullName: formData.fullName.trim(),
+            email: formData.email.trim(),
+            memberSince: new Date().toISOString()
+        });
         setRegistered(true);
     };
 
@@ -94,7 +102,7 @@ function Register() {
 
                     <p className="register-topbar-login">
                         ¿Ya tienes una cuenta?
-                        <Link to="/">Iniciar sesión</Link>
+                        <Link to="/login">Iniciar sesión</Link>
                     </p>
                 </header>
 
@@ -159,7 +167,7 @@ function Register() {
                                 todas las funciones de SetupWise.
                             </p>
 
-                            <Link to="/" className="register-submit success-button">
+                            <Link to="/login" className="register-submit success-button">
                                 Ir a iniciar sesión
                                 <ArrowRight size={18} />
                             </Link>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
     Scale,
     Package,
@@ -14,7 +15,8 @@ import {
     ImageOff,
     Tag
 } from "lucide-react";
-import { products } from "../data/Products";
+import { useAuth } from "../context/AuthContext";
+import { products } from "../data/products";
 import { compareSpecs, specsById } from "../data/compareSpecs";
 import { formatPrice } from "../utils/formatPrice";
 import "../assets/css/Compare.css";
@@ -103,6 +105,10 @@ function getRecommendation(items, specs) {
 /* ---------- Página ---------- */
 
 function Compare() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { isLoggedIn } = useAuth();
+
     // Selección inicial de ejemplo (Logitech G502 y Razer DeathAdder V3)
     const [selectedIds, setSelectedIds] = useState([10, 2]);
     const [picking, setPicking] = useState(false);
@@ -138,6 +144,12 @@ function Compare() {
     };
 
     const handleSave = () => {
+        // Guardar una comparación requiere una cuenta
+        if (!isLoggedIn) {
+            navigate("/login", { state: { from: location.pathname } });
+            return;
+        }
+
         // Pendiente: guardar la comparación en la base de datos.
         setSaved(true);
     };
@@ -380,7 +392,11 @@ function Compare() {
                                 disabled={saved}
                             >
                                 {saved ? <Check size={20} /> : <Bookmark size={20} />}
-                                {saved ? "Comparación guardada" : "Guardar comparación"}
+                                {saved
+                                    ? "Comparación guardada"
+                                    : isLoggedIn
+                                      ? "Guardar comparación"
+                                      : "Inicia sesión para guardar"}
                             </button>
                         </>
                     )}
