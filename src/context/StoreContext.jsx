@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getProduct } from "../data/builder";
+import { useInventory } from "./InventoryContext";
 
 // Favoritos y carrito compartidos por toda la app.
 // Se guardan en el navegador; luego se pueden sincronizar con el backend.
@@ -28,6 +28,8 @@ function write(key, value) {
 }
 
 export function StoreProvider({ children }) {
+    const { getProduct } = useInventory();
+
     const [favorites, setFavorites] = useState(() => read(FAVORITES_KEY));
     const [cart, setCart] = useState(() => read(CART_KEY));
 

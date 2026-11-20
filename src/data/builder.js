@@ -11,7 +11,6 @@ import {
     Monitor,
     Puzzle
 } from "lucide-react";
-import { products } from "./products";
 
 /* ========================================
    CATEGORÍAS DEL CONFIGURADOR
@@ -78,29 +77,26 @@ export const componentProducts = [
    UTILIDADES
 ======================================== */
 
-const byId = new Map([...componentProducts, ...products].map((p) => [p.id, p]));
-
-export const getProduct = (id) => byId.get(id);
-
-export function getOptions(category) {
+// inventory = { products, components } (vienen del InventoryContext)
+export function getOptions(category, inventory) {
     if (category.catalog) {
-        return products.filter(
+        return inventory.products.filter(
             (p) =>
                 category.catalog.includes(p.category) &&
                 !(category.excludeIds || []).includes(p.id)
         );
     }
 
-    return componentProducts.filter((p) => p.type === category.id);
+    return inventory.components.filter((p) => p.type === category.id);
 }
 
-const firstOf = (selection, id) => getProduct((selection[id] || [])[0]);
+const firstOf = (selection, id, getProduct) => getProduct((selection[id] || [])[0]);
 
 // Devuelve el motivo por el que un producto NO es compatible con lo ya elegido (o null).
-export function getIncompatibility(categoryId, product, selection) {
-    const cpu = firstOf(selection, "cpu");
-    const mobo = firstOf(selection, "mobo");
-    const rams = (selection.ram || []).map(getProduct);
+export function getIncompatibility(categoryId, product, selection, getProduct) {
+    const cpu = firstOf(selection, "cpu", getProduct);
+    const mobo = firstOf(selection, "mobo", getProduct);
+    const rams = (selection.ram || []).map(getProduct).filter(Boolean);
 
     if (categoryId === "cpu" && mobo && mobo.socket !== product.socket) {
         return `Socket ${product.socket} ≠ placa (${mobo.socket})`;
@@ -131,12 +127,12 @@ export function getIncompatibility(categoryId, product, selection) {
 }
 
 // Avisos generales sobre el setup completo.
-export function getWarnings(selection) {
+export function getWarnings(selection, getProduct) {
     const warnings = [];
 
-    const cpu = firstOf(selection, "cpu");
-    const gpu = firstOf(selection, "gpu");
-    const psu = firstOf(selection, "psu");
+    const cpu = firstOf(selection, "cpu", getProduct);
+    const gpu = firstOf(selection, "gpu", getProduct);
+    const psu = firstOf(selection, "psu", getProduct);
 
     if (psu && (cpu || gpu)) {
         const needed = (cpu?.tdp || 0) + (gpu?.tdp || 0) + 150;

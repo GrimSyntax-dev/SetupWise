@@ -82,6 +82,7 @@ function Register() {
         updateUser({
             fullName: formData.fullName.trim(),
             email: formData.email.trim(),
+            role: "user",
             memberSince: new Date().toISOString()
         });
         setRegistered(true);

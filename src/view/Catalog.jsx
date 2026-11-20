@@ -15,7 +15,8 @@ import {
     SearchX
 } from "lucide-react";
 import ProductCard from "../components/ProductCard";
-import { categories, products } from "../data/products";
+import { categories } from "../data/products";
+import { useInventory } from "../context/InventoryContext";
 import "../assets/css/Catalog.css";
 
 const PAGE_SIZE = 8;
@@ -39,6 +40,7 @@ function normalize(text) {
 
 function Catalog() {
     const { search } = useOutletContext();
+    const { products } = useInventory();
     const [searchParams] = useSearchParams();
     const requested = searchParams.get("categoria");
     const [category, setCategory] = useState(

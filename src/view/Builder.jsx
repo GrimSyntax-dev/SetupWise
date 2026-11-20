@@ -18,10 +18,10 @@ import {
 } from "lucide-react";
 import SafeImage from "../components/SafeImage";
 import { useAuth } from "../context/AuthContext";
+import { useInventory } from "../context/InventoryContext";
 import {
     builderCategories,
     getOptions,
-    getProduct,
     getIncompatibility,
     getWarnings
 } from "../data/builder";
@@ -32,6 +32,8 @@ function Builder() {
     const navigate = useNavigate();
     const location = useLocation();
     const { isLoggedIn } = useAuth();
+    const inventory = useInventory();
+    const { getProduct } = inventory;
 
     // selection = { cpu: [101], ram: [121, 121], ... } (ids de productos)
     const [selection, setSelection] = useState({});
@@ -42,7 +44,9 @@ function Builder() {
     const componentsRef = useRef(null);
     const peripheralsRef = useRef(null);
 
-    const itemsOf = (categoryId) => selection[categoryId] || [];
+    // Se descartan los productos que ya no existen (por ejemplo, eliminados por el administrador)
+    const itemsOf = (categoryId) =>
+        (selection[categoryId] || []).filter((id) => getProduct(id));
 
     const add = (category, productId) => {
         const next = [...itemsOf(category.id), productId];
@@ -85,7 +89,7 @@ function Builder() {
     );
 
     const total = chosen.reduce((sum, item) => sum + item.product.price, 0);
-    const warnings = getWarnings(selection);
+    const warnings = getWarnings(selection, getProduct);
 
     const renderCategory = (category) => {
         const Icon = category.icon;
@@ -161,11 +165,11 @@ function Builder() {
 
                 {isOpen && !isFull && (
                     <ul className="options-list">
-                        {getOptions(category).map((product) => {
+                        {getOptions(category, inventory).map((product) => {
                             const outOfStock = product.stock === 0;
                             const conflict = outOfStock
                                 ? null
-                                : getIncompatibility(category.id, product, selection);
+                                : getIncompatibility(category.id, product, selection, getProduct);
                             const disabled = outOfStock || Boolean(conflict);
 
                             let note = null;

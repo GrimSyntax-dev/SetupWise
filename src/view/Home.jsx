@@ -23,8 +23,9 @@ import {
 import ProductCard from "../components/ProductCard";
 import SafeImage from "../components/SafeImage";
 import { useAuth } from "../context/AuthContext";
-import { products, categories } from "../data/products";
-import { ads } from "../data/ads";
+import { categories } from "../data/products";
+import { useInventory } from "../context/InventoryContext";
+import { getAdStatus } from "../utils/ads";
 import "../assets/css/Catalog.css";
 import "../assets/css/Home.css";
 
@@ -89,7 +90,7 @@ function AdCarousel({ items }) {
     }, [index, playing, hovering, total]);
 
     const go = (next) => setIndex((next + total) % total);
-    const ad = items[index];
+    const ad = items[index] ?? items[0];
 
     return (
         <section
@@ -169,12 +170,10 @@ function AdCarousel({ items }) {
 
 function Home() {
     const { isLoggedIn } = useAuth();
+    const { products, ads } = useInventory();
 
     // Solo se muestran los anuncios que están dentro de su rango de fechas
-    const now = new Date();
-    const activeAds = ads.filter(
-        (ad) => new Date(ad.startsAt) <= now && now <= new Date(`${ad.endsAt}T23:59:59`)
-    );
+    const activeAds = ads.filter((ad) => getAdStatus(ad) === "active");
 
     const featured = products.filter((p) => p.featured).slice(0, 4);
     const browsableCategories = categories.filter((c) => c.id !== "todos");

@@ -16,7 +16,7 @@ import {
 import ProductCard from "../components/ProductCard";
 import { useAuth } from "../context/AuthContext";
 import { useStore } from "../context/StoreContext";
-import { getProduct } from "../data/builder";
+import { useInventory } from "../context/InventoryContext";
 import "../assets/css/Catalog.css";
 import "../assets/css/Account.css";
 
@@ -156,6 +156,7 @@ function ProfileTab() {
 
 function FavoritesTab() {
     const { favorites } = useStore();
+    const { getProduct } = useInventory();
     const items = favorites.map(getProduct).filter(Boolean);
 
     if (items.length === 0) {

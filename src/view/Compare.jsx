@@ -16,7 +16,7 @@ import {
     Tag
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import { products } from "../data/products";
+import { useInventory } from "../context/InventoryContext";
 import { compareSpecs, specsById } from "../data/compareSpecs";
 import { formatPrice } from "../utils/formatPrice";
 import "../assets/css/Compare.css";
@@ -108,6 +108,7 @@ function Compare() {
     const navigate = useNavigate();
     const location = useLocation();
     const { isLoggedIn } = useAuth();
+    const { products } = useInventory();
 
     // Selección inicial de ejemplo (Logitech G502 y Razer DeathAdder V3)
     const [selectedIds, setSelectedIds] = useState([10, 2]);

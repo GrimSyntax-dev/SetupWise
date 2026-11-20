@@ -8,12 +8,13 @@ import {
     X,
     User,
     Repeat,
-    LogOut
+    LogOut,
+    ShieldCheck
 } from "lucide-react";
 import SafeImage from "./SafeImage";
 import { useAuth } from "../context/AuthContext";
 import { useStore } from "../context/StoreContext";
-import { getProduct } from "../data/builder";
+import { useInventory } from "../context/InventoryContext";
 import { formatPrice } from "../utils/formatPrice";
 
 /* ========================================
@@ -22,6 +23,7 @@ import { formatPrice } from "../utils/formatPrice";
 
 export function FavoritesPopover({ onClose }) {
     const { favorites, toggleFavorite, addToCart, quantityInCart } = useStore();
+    const { getProduct } = useInventory();
 
     const items = favorites.map(getProduct).filter(Boolean);
 
@@ -213,6 +215,13 @@ export function UserPopover({ onClose }) {
                 <User size={18} />
                 Ver mi cuenta
             </Link>
+
+            {user.role === "admin" && (
+                <Link to="/admin" role="menuitem" className="menu-item" onClick={onClose}>
+                    <ShieldCheck size={18} />
+                    Panel de administrador
+                </Link>
+            )}
 
             <button type="button" role="menuitem" className="menu-item" onClick={handleSwitch}>
                 <Repeat size={18} />

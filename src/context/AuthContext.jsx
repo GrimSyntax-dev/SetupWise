@@ -30,6 +30,7 @@ function write(key, value) {
 const createDemoUser = () => ({
     fullName: "Esau",
     email: "esau@ejemplo.com",
+    role: "user",
     phone: "",
     city: "",
     memberSince: new Date().toISOString()
@@ -38,6 +39,7 @@ const createDemoUser = () => ({
 const createBlankUser = () => ({
     fullName: "Nuevo usuario",
     email: "",
+    role: "user",
     phone: "",
     city: "",
     memberSince: new Date().toISOString()
@@ -56,8 +58,9 @@ export function AuthProvider({ children }) {
     useEffect(() => write(SESSION_KEY, isLoggedIn), [isLoggedIn]);
 
     // Inicia sesión. Si no hay cuenta guardada en este dispositivo, crea una vacía.
+    // El rol ("user" | "admin") lo definirá el backend; por ahora lo envía el Login.
     const signIn = (profile = {}) => {
-        setUser((prev) => prev ?? { ...createBlankUser(), ...profile });
+        setUser((prev) => ({ ...(prev ?? createBlankUser()), ...profile }));
         setIsLoggedIn(true);
     };
 
@@ -71,8 +74,12 @@ export function AuthProvider({ children }) {
         setUser((prev) => ({ ...(prev ?? createBlankUser()), ...changes }));
     };
 
+    const isAdmin = isLoggedIn && user?.role === "admin";
+
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn, signIn, signOut, updateUser }}>
+        <AuthContext.Provider
+            value={{ user, isLoggedIn, isAdmin, signIn, signOut, updateUser }}
+        >
             {children}
         </AuthContext.Provider>
     );

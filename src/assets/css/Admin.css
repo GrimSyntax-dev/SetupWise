@@ -1,0 +1,1053 @@
+/* ========================================
+   BASE DEL PANEL
+======================================== */
+
+.adm-page {
+    --card: #0a1030;
+    --line: rgba(99, 102, 241, 0.35);
+    --text: #f8fafc;
+    --muted: #aab4c8;
+    --violet: #8b5cf6;
+    --cyan: #19b8f5;
+    --gradient: linear-gradient(90deg, #7c3aed, #1ec3ff);
+
+    padding: 28px 32px 48px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #8b5cf6, #1ea7ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- Barra superior y sidebar ---------- */
+
+.adm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 6px 14px;
+
+    color: #c4b5fd;
+    font-size: 13px;
+    font-weight: 600;
+
+    background: rgba(109, 40, 217, 0.25);
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    border-radius: 999px;
+}
+
+.adm-user {
+    color: #dbe3f5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.adm-side-foot {
+    margin-top: auto;
+    padding: 16px 0 24px;
+}
+
+/* ---------- Encabezado de página ---------- */
+
+.adm-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.adm-head h1 {
+    margin: 0 0 6px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.adm-head p {
+    max-width: 560px;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #c3cdea;
+    font-size: 14px;
+}
+
+.adm-live {
+    flex-shrink: 0;
+    color: #34d399;
+}
+
+.adm-head-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ========================================
+   BOTONES
+======================================== */
+
+.adm-btn {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0 18px;
+    white-space: nowrap;
+
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.adm-btn.primary {
+    background: var(--gradient);
+}
+
+.adm-btn.primary:hover {
+    box-shadow: 0 0 20px rgba(80, 140, 255, 0.5);
+}
+
+.adm-btn.ghost {
+    color: #dbe3f5;
+    background: transparent;
+    border-color: rgba(99, 102, 241, 0.55);
+}
+
+.adm-btn.ghost:hover {
+    background: rgba(99, 102, 241, 0.18);
+}
+
+.adm-btn.small {
+    height: 32px;
+    padding: 0 12px;
+
+    font-size: 12.5px;
+
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.adm-btn.small:hover {
+    background: rgba(99, 102, 241, 0.4);
+}
+
+.adm-icon-btn {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #c7d2fe;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.adm-icon-btn:hover {
+    color: var(--cyan);
+    background: rgba(99, 102, 241, 0.18);
+}
+
+.adm-icon-btn.danger:hover {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+}
+
+.adm-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #5aa9ff;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.adm-link:hover {
+    text-decoration: underline;
+}
+
+.adm-btn:focus-visible,
+.adm-icon-btn:focus-visible,
+.adm-link:focus-visible,
+.adm-chips button:focus-visible,
+.adm-stock button:focus-visible,
+.adm-pagination button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   RESUMEN
+======================================== */
+
+.adm-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+}
+
+.adm-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px;
+
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.adm-stat-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #a78bfa;
+    background: rgba(99, 102, 241, 0.16);
+    border-radius: 12px;
+}
+
+.adm-stat.low .adm-stat-icon {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.14);
+}
+
+.adm-stat.out .adm-stat-icon {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.14);
+}
+
+.adm-stat-label {
+    display: block;
+
+    color: var(--muted);
+    font-size: 12.5px;
+}
+
+.adm-stat strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.adm-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.adm-panel {
+    padding: 20px;
+
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.adm-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+.adm-panel-head h2 {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.adm-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adm-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 8px 10px;
+
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    border-radius: 10px;
+}
+
+.adm-list-info {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.adm-list-info strong {
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.adm-list-info span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.adm-thumb {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background: radial-gradient(circle, #151d4d, #090e2b);
+    border-radius: 8px;
+}
+
+.adm-swatch {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+}
+
+.adm-swatch.large {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+}
+
+/* Barras por categoría */
+
+.adm-bars {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.adm-bars li {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 13px;
+}
+
+.adm-bar-label {
+    color: #dbe3f5;
+}
+
+.adm-bar-track {
+    height: 10px;
+
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.adm-bar-fill {
+    display: block;
+    height: 100%;
+
+    background: var(--gradient);
+    border-radius: 999px;
+}
+
+.adm-bar-value {
+    color: var(--cyan);
+    font-weight: 700;
+    text-align: right;
+}
+
+.adm-empty {
+    margin: 0;
+    padding: 24px;
+
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ========================================
+   INSUMOS: ETIQUETAS DE ESTADO
+======================================== */
+
+.adm-badge-stock,
+.adm-badge-ad {
+    display: inline-block;
+
+    padding: 3px 10px;
+    white-space: nowrap;
+
+    font-size: 11.5px;
+    font-weight: 600;
+
+    border-radius: 6px;
+}
+
+.adm-badge-stock.ok,
+.adm-badge-ad.active {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.adm-badge-stock.low,
+.adm-badge-ad.scheduled {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.adm-badge-stock.out,
+.adm-badge-ad.expired {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+/* ========================================
+   INVENTARIO
+======================================== */
+
+.adm-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.adm-search {
+    flex: 1 1 280px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 14px;
+
+    color: #c7d2fe;
+    background: rgba(10, 16, 48, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.55);
+    border-radius: 10px;
+}
+
+.adm-search:focus-within {
+    border-color: var(--violet);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.adm-search input {
+    flex: 1;
+    min-width: 0;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.adm-select,
+.adm-field select,
+.adm-field input:not([type="color"]),
+.adm-field textarea {
+    width: 100%;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    background: #0e1530;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    border-radius: 10px;
+    outline: none;
+}
+
+.adm-select {
+    width: auto;
+    height: 42px;
+    padding: 0 12px;
+}
+
+.adm-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.adm-chips button {
+    height: 36px;
+    padding: 0 14px;
+
+    color: #c7d2fe;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+
+    background: rgba(8, 12, 36, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.45);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.adm-chips button.active {
+    color: white;
+    font-weight: 600;
+
+    background: linear-gradient(90deg, #6d28d9, #8b2cf5);
+    border-color: transparent;
+}
+
+.adm-table-wrap {
+    overflow-x: auto;
+
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.adm-table {
+    width: 100%;
+    min-width: 860px;
+
+    border-collapse: collapse;
+}
+
+.adm-table th {
+    padding: 12px 16px;
+
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: left;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.adm-table td {
+    padding: 10px 16px;
+
+    color: #dbe3f5;
+    font-size: 13.5px;
+
+    border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.adm-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.adm-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.07);
+}
+
+.adm-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.adm-product div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.adm-product strong {
+    max-width: 280px;
+
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.adm-product span:not(.adm-thumb) {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.adm-price {
+    color: var(--cyan);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.adm-stock {
+    display: inline-flex;
+    align-items: center;
+
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.adm-stock button {
+    width: 30px;
+    height: 34px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #c7d2fe;
+    background: rgba(99, 102, 241, 0.12);
+    border: none;
+    cursor: pointer;
+}
+
+.adm-stock button:hover:not(:disabled) {
+    color: white;
+    background: rgba(99, 102, 241, 0.35);
+}
+
+.adm-stock button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.adm-stock input {
+    width: 54px;
+    height: 34px;
+
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+
+    background: #0e1530;
+    border: none;
+    outline: none;
+
+    -moz-appearance: textfield;
+}
+
+.adm-stock input::-webkit-outer-spin-button,
+.adm-stock input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.adm-stock input:focus {
+    box-shadow: inset 0 0 0 2px var(--violet);
+}
+
+.adm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+}
+
+.adm-table-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.adm-pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adm-pagination button {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #c7d2fe;
+    background: rgba(8, 12, 36, 0.9);
+    border: 1px solid rgba(99, 102, 241, 0.45);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.adm-pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   ANUNCIOS
+======================================== */
+
+.adm-ad-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.adm-ad-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 14px 16px;
+
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.adm-ad-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.adm-ad-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.adm-ad-title strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 17px;
+}
+
+.adm-ad-info p {
+    margin: 2px 0 6px;
+
+    color: #dbe3f5;
+    font-size: 14px;
+}
+
+.adm-ad-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+
+    color: var(--muted);
+    font-size: 12.5px;
+}
+
+.adm-ad-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ========================================
+   VENTANAS (crear / editar)
+======================================== */
+
+.adm-dialog {
+    width: min(640px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    overflow: auto;
+
+    color: var(--text, #f8fafc);
+    font-family: "Inter", sans-serif;
+
+    background: #0a1030;
+    border: 1px solid rgba(139, 92, 246, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+}
+
+.adm-dialog::backdrop {
+    background: rgba(2, 4, 14, 0.75);
+    backdrop-filter: blur(3px);
+}
+
+.adm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 22px 24px 20px;
+}
+
+.adm-form > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adm-form h2 {
+    margin: 0;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.adm-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.adm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    min-width: 0;
+}
+
+.adm-field.wide,
+.adm-check.wide {
+    grid-column: 1 / -1;
+}
+
+.adm-field > span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.adm-field input:not([type="color"]),
+.adm-field select {
+    height: 44px;
+    padding: 0 12px;
+}
+
+.adm-field textarea {
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+.adm-field input[type="color"] {
+    width: 100%;
+    height: 44px;
+    padding: 4px;
+
+    background: #0e1530;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.adm-field input:focus,
+.adm-field select:focus,
+.adm-field textarea:focus {
+    border-color: var(--violet, #8b5cf6);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.adm-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.adm-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: #7c3aed;
+}
+
+.adm-error {
+    margin: 0;
+    padding: 10px 12px;
+
+    color: #f87171;
+    font-size: 13px;
+
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    border-radius: 8px;
+}
+
+.adm-form > footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding-top: 6px;
+}
+
+/* Vista previa del anuncio */
+
+.adm-ad-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    padding: 18px 20px;
+
+    border-radius: 12px;
+}
+
+.adm-ad-preview-tag {
+    padding: 1px 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+}
+
+.adm-ad-preview strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.adm-ad-preview h3 {
+    margin: 0;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.adm-ad-preview p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.adm-ad-preview-cta {
+    margin-top: 6px;
+    padding: 6px 16px;
+
+    color: #0a1030;
+    font-size: 12.5px;
+    font-weight: 600;
+
+    background: white;
+    border-radius: 999px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+    .adm-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+    .adm-page {
+        padding: 20px 16px 36px;
+    }
+
+    .adm-head h1 {
+        font-size: 28px;
+    }
+
+    .adm-side-foot,
+    .adm-hide-mobile,
+    .adm-user {
+        display: none;
+    }
+
+    .adm-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .adm-bars li {
+        grid-template-columns: 110px minmax(0, 1fr) 40px;
+    }
+
+    .adm-ad-item {
+        flex-wrap: wrap;
+    }
+
+    .adm-swatch.large {
+        width: 48px;
+        height: 48px;
+    }
+
+    .adm-badge {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .adm-btn {
+        transition: none;
+    }
+}

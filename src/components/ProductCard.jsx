@@ -71,10 +71,12 @@ function ProductCard({ product }) {
                 <div className="product-meta">
                     <strong className="product-price">{formatPrice(product.price)}</strong>
 
-                    <span className="product-rating">
-                        <Star size={13} fill="currentColor" />
-                        {product.rating} ({product.reviews})
-                    </span>
+                    {product.reviews > 0 && (
+                        <span className="product-rating">
+                            <Star size={13} fill="currentColor" />
+                            {product.rating} ({product.reviews})
+                        </span>
+                    )}
                 </div>
 
                 <div className="product-actions">
